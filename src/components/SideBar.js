@@ -26,6 +26,7 @@ const Container = styled.div`
 
     @media(min-width:1005px){
         display:flex;
+        max-height:50vh;
         flex-direction:column;
         width:min(394px,100%);
     }
