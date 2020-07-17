@@ -4,7 +4,7 @@ import { ArrowLeft, Email, SearchOutline, Notifications, HomeCircle } from "../s
 import ProfilePage from "../components/ProfilePage";
 const Main = () => {
     return (
-        <Container>
+        <>
             <Header>
                 <button>
                     <ArrowIcon />
@@ -27,23 +27,23 @@ const Main = () => {
                 <BellIcon />
                 <EmailIcon />
             </BottomIcons>
-        </Container>
+        </>
     )
 }
 
 export default Main
 
 
-const Container = styled.div`
-    display:flex;
-    flex-direction:column;
-    width: min(601px, 100%);
+// const Container = styled.div`
+//     display:flex;
+//     flex-direction:column;
+//     width: min(601px, 100%);
 
-    @media(min-width:500px){
-        border-left:1px solid var(--profile-background);
-        border-right:1px solid var(--profile-background);
-    }
-`
+//     @media(min-width:500px){
+//         border-left:1px solid var(--profile-background);
+//         border-right:1px solid var(--profile-background);
+//     }
+// `
 
 const Header = styled.div`
     z-index:2;

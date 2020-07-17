@@ -1,8 +1,9 @@
 import React from 'react'
+import Main from "../components/Main";
 
 const Profil = () => {
     return (
-        <h2>Profil page</h2>
+        <Main />
     )
 }
 

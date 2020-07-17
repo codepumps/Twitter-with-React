@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { css } from "styled-components";
+import { Link } from "react-router-dom";
 import { Twitter, HomeCircle, Hash, Notifications, Email, BookmarkOutline, Person, FileList2, MoreHorizontal, Feather, ChevronDown } from "../styles/icons";
 import Button from "../components/Button";
 import profile from "../images/profile.jpg"
@@ -9,34 +10,53 @@ const MenuBar = () => {
         <Container>
             <TopSide>
                 <Logo />
-                <MenuButton>
-                    <HomeIcon />
-                    <span>Anasayfa</span>
-                </MenuButton>
-                <MenuButton>
-                    <HashIcon />
-                    <span>Keşfet</span>
-                </MenuButton>
-                <MenuButton>
-                    <NotificationsIcon />
-                    <span>Bildirimler</span>
-                </MenuButton>
-                <MenuButton>
-                    <EmailIcon />
-                    <span>Mesajlar</span>
-                </MenuButton>
-                <MenuButton>
-                    <BookmarkOutlineIcon />
-                    <span>Yer İşaretleri</span>
-                </MenuButton>
-                <MenuButton>
-                    <FileListIcon />
-                    <span>Listeler</span>
-                </MenuButton>
-                <MenuButton className="active">
-                    <PersonIcon />
-                    <span>Profil</span>
-                </MenuButton>
+                <Link to="/home">
+                    <MenuButton>
+                        <HomeIcon />
+                        <span>
+                            Anasayfa
+                    </span>
+                    </MenuButton>
+                </Link>
+                <Link to="/explore">
+                    <MenuButton>
+                        <HashIcon />
+
+                        <span>Keşfet</span>
+                    </MenuButton>
+                </Link>
+                <Link to="/notifications">
+                    <MenuButton>
+                        <NotificationsIcon />
+                        <span>Bildirimler</span>
+                    </MenuButton>
+                </Link>
+
+                <Link to="/messages">
+                    <MenuButton>
+                        <EmailIcon />
+                        <span>Mesajlar</span>
+                    </MenuButton>
+                </Link>
+
+                <Link to="/bookmarks">
+                    <MenuButton>
+                        <BookmarkOutlineIcon />
+                        <span>Yer İşaretleri</span>
+                    </MenuButton>
+                </Link>
+                <Link to="/lists">
+                    <MenuButton>
+                        <FileListIcon />
+                        <span>Listeler</span>
+                    </MenuButton>
+                </Link>
+                <Link to="/profil">
+                    <MenuButton className="active">
+                        <PersonIcon />
+                        <span>Profil</span>
+                    </MenuButton>
+                </Link>
                 <MenuButton>
                     <MoreIcon />
                     <span>Daha Fazla</span>
@@ -86,6 +106,10 @@ const TopSide = styled.div`
     display:flex;
     flex-direction:column;
     align-items:center;
+
+    >a{
+        text-decoration:none;
+    }
 
     @media(min-width:1280px){
         align-items:flex-start;

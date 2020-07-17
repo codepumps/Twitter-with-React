@@ -23,10 +23,8 @@ export default SideBar
 
 const Container = styled.div`
     display:none;
-
     @media(min-width:1005px){
         display:flex;
-        max-height:50vh;
         flex-direction:column;
         width:min(394px,100%);
     }
@@ -71,6 +69,9 @@ const Body = styled.div`
     flex-direction:column;
     padding:57px 24px 200px;
     margin-top:5px;
+    > div + div {
+    margin-top: 15px;
+    }
 `
 
 const SearchIcon = styled(SearchOutline)`
