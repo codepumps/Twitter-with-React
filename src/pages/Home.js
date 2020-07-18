@@ -1,8 +1,11 @@
 import React from 'react'
-// import styled from "styled-components";
+import HomeMain from "../components/HomeMain";
+
 const Home = () => {
     return (
-        <h2>home page</h2>
+        <div>
+            <HomeMain />
+        </div>
     )
 }
 

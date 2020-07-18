@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
-import { Twitter, HomeCircle, Hash, Notifications, Email, BookmarkOutline, Person, FileList2, MoreHorizontal, Feather, ChevronDown } from "../styles/icons";
+import { Twitter, HomeCircle, Hash, BellOutline, Email, BookmarkOutline, Person, FileList2, MoreHorizontal, Feather, ChevronDown } from "../styles/icons";
 import Button from "../components/Button";
 import profile from "../images/profile.jpg"
 
@@ -227,7 +227,7 @@ const HomeIcon = styled(HomeCircle)`
 const HashIcon = styled(Hash)`
     ${iconCommonCss}
 `
-const NotificationsIcon = styled(Notifications)`
+const NotificationsIcon = styled(BellOutline)`
     ${iconCommonCss}
 `
 const EmailIcon = styled(Email)`

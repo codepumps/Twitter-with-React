@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from "styled-components";
 import { ArrowLeft, Email, SearchOutline, Notifications, HomeCircle } from "../styles/icons";
-import ProfilePage from "../components/ProfilePage";
+import ProfilePage from "./ProfilePage";
 const Main = () => {
     return (
         <>

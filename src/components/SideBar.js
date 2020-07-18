@@ -69,9 +69,6 @@ const Body = styled.div`
     flex-direction:column;
     padding:57px 24px 200px;
     margin-top:5px;
-    > div + div {
-    margin-top: 15px;
-    }
 `
 
 const SearchIcon = styled(SearchOutline)`
