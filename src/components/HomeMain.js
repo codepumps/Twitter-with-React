@@ -23,11 +23,21 @@ const HomeMain = () => {
                     </textArea>
                     <TextBottom>
                         <div>
-                            <HomeChatGalery />
-                            <HomeChatGif />
-                            <HomeChatSurvey />
-                            <HomeChatSmile />
-                            <HomeChatDate />
+                            <span >
+                                <HomeChatGalery />
+                            </span>
+                            <span>
+                                <HomeChatGif />
+                            </span>
+                            <span className="none-icon">
+                                <HomeChatSurvey />
+                            </span>
+                            <span>
+                                <HomeChatSmile />
+                            </span>
+                            <span className="none-icon">
+                                <HomeChatDate />
+                            </span>
                         </div>
                         <SubmitBtn
                             theme={{
@@ -39,7 +49,7 @@ const HomeMain = () => {
                     </TextBottom>
                 </Text>
             </Chat>
-
+            <BottomSpace />
         </>
     )
 }
@@ -97,7 +107,7 @@ const Text = styled.div`
         width:100%;
         outline:0;
         padding-top:3px;
-        padding-bottom:8px;
+        padding-bottom:6px;
         resize:none;
         &::placeholder{
             color:var(--gray);
@@ -116,13 +126,18 @@ const TextBottom = styled.div`
 
     >div{
         display:flex;
-        >svg{
-            margin-right:15px;
+        >span{
+            cursor:pointer;
+            padding:8px;
+            border-radius:50%;
+            &:hover{
+                background:var(--twitter-dark-hover);
+            }
         }
-        >svg.none-icon{
+        >span.none-icon{
             display:none;
-            @media (min-width:705px){
-                display:inline-block;
+                @media (min-width:705px){
+                    display:inline-block;
             }
         }
     }
@@ -131,4 +146,10 @@ const SubmitBtn = styled(Button)`
     padding:9px 15px;
     opacity:.5;
     cursor:default;
+`
+
+const BottomSpace = styled.div`
+    height:10px;
+    width:100%;
+    background:rgb(32, 35, 39);
 `
