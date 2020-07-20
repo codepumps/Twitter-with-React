@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from "styled-components";
-import { Retweet, Heart, Comment, SaveAlt } from "../styles/icons";
+import { Retweet, Heart, Comment, SaveAlt, ChevronDown } from "../styles/icons";
 
 const Tweet = () => {
     return (
@@ -18,6 +18,7 @@ const Tweet = () => {
                         <span>@vuralucarhd</span>
                         <Point />
                         <time>21 Nis</time>
+                        <DownIcon />
                     </Header>
                     <Description>
                         React; Facebook tarafından üretilmiş, kullanıcı ara yüzleri oluşturmak için kullanılan bir javascript kütüphanesidir. React bir framework değil, belirttiğim gibi bir kütüphanedir.
@@ -92,6 +93,7 @@ const Header = styled.div`
     display:flex;
     align-items:center;
     white-space:nowrap;
+    position:relative;
     >strong{
         margin-right:5px;
     }
@@ -102,6 +104,10 @@ const Header = styled.div`
         white-space:nowrap;
         text-overflow:ellipsis;
         overflow: hidden;
+    }
+    >svg{
+        position:absolute;
+        right:0;
     }
 `;
 const Point = styled.div`
@@ -128,8 +134,8 @@ const Icons = styled.div`
     justify-content:space-between;
     align-items:center;
     flex-flow:row wrap;
-    margin:10px auto 0;
-    width:100%;
+    margin:10px 0;
+    width:85%;
 `;
 const Status = styled.div`
     display:flex;
@@ -178,3 +184,7 @@ const SaveAltIcon = styled(SaveAlt)`
         fill:var(--twitter);
     }
 `;
+const DownIcon = styled(ChevronDown)`
+    ${iconCommonCss};
+    margin-right:0px;
+`

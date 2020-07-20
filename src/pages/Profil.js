@@ -1,5 +1,5 @@
 import React from 'react'
-import ProfilMain from "../components/ProfilMain";
+import ProfilMain from "../components/Profil/ProfilMain";
 
 const Profil = () => {
     return (

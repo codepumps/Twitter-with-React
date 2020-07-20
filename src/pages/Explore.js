@@ -1,8 +1,9 @@
 import React from 'react'
+import ExploreMain from "../components/Explore/ExploreMain";
 
 const Explore = () => {
     return (
-        <h2>Explore page</h2>
+        <ExploreMain />
     )
 }
 

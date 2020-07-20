@@ -1,9 +1,9 @@
 import React from 'react'
 import styled, { css } from "styled-components";
-import { Calendar, LocationOn, Cake } from "../styles/icons";
-import profile from "../images/profile.jpg"
-import Button from "../components/Button";
-import ProfileContent from "../components/ProfileContent";
+import { Calendar, LocationOn, Cake } from "../../styles/icons";
+import profile from "../../images/profile.jpg";
+import Button from "../Button";
+import ProfileContent from "./ProfileContent";
 
 
 const ProfilePage = () => {

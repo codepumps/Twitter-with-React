@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Button from "./Button";
-import { HomeStarIcon, HomeChatGalery, HomeChatDate, HomeChatGif, HomeChatSmile, HomeChatSurvey } from "../styles/icons";
-import profile from "../images/profile.jpg";
+import Button from "../Button";
+import { HomeStarIcon, HomeChatGalery, HomeChatDate, HomeChatGif, HomeChatSmile, HomeChatSurvey } from "../../styles/icons";
+import profile from "../../images/profile.jpg";
+import Tweet from "../Tweet";
 
 const HomeMain = () => {
     return (
@@ -50,6 +51,13 @@ const HomeMain = () => {
                 </Text>
             </Chat>
             <BottomSpace />
+            <Tweets>
+                <Tweet />
+                <Tweet />
+                <Tweet />
+                <Tweet />
+                <Tweet />
+            </Tweets>
         </>
     )
 }
@@ -153,3 +161,9 @@ const BottomSpace = styled.div`
     width:100%;
     background:rgb(32, 35, 39);
 `
+
+const Tweets = styled.div`
+    display:flex;
+    flex-direction:column;
+    flex-shrink:0;
+`;

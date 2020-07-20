@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
-import { Twitter, HomeCircle, Hash, BellOutline, Email, BookmarkOutline, Person, FileList2, MoreHorizontal, Feather, ChevronDown } from "../styles/icons";
+import { Twitter, HomeCircle, Hash, BellOutline, Email, BookmarkOutline, Person, FileList2, MoreHorizantalIcon, Feather, ChevronDown } from "../styles/icons";
 import Button from "../components/Button";
 import profile from "../images/profile.jpg"
 
@@ -57,8 +57,8 @@ const MenuBar = () => {
                         <span>Profil</span>
                     </MenuButton>
                 </Link>
-                <MenuButton>
-                    <MoreIcon />
+                <MenuButton className="moreIcon">
+                    <MoreHorizantalIcon />
                     <span>Daha Fazla</span>
                 </MenuButton>
                 <TweetleBtn theme={{
@@ -132,7 +132,7 @@ const MenuButton = styled.div`
             margin-left:17px;
         }
     }
-    padding:12px 5px;
+    padding:12px 6px;
     cursor:pointer;
     border-radius:25px;
     &:hover{
@@ -146,6 +146,19 @@ const MenuButton = styled.div`
         }
         
     }
+    &.moreIcon{
+        >svg{
+            fill:#fff;
+            margin-top:3px;
+            margin-left:3px;
+        }
+    }
+    &.moreIcon:hover{
+        >svg{
+            fill:var(--twitter);
+        }
+    }
+    
     
 `
 const TweetleBtn = styled(Button)`
@@ -212,8 +225,8 @@ const iconCommonCss = css`
     color:#fff;
 `;
 const Logo = styled(Twitter)`
-    width:42px;
-    height:42px;
+    width:35px;
+    height:35px;
     margin-bottom:20px;
     cursor:pointer;
     >svg{
@@ -241,11 +254,6 @@ const PersonIcon = styled(Person)`
 `
 const FileListIcon = styled(FileList2)`
     ${iconCommonCss}
-`
-const MoreIcon = styled(MoreHorizontal)`
-    ${iconCommonCss}
-    border:2px solid var(--white);
-    border-radius:50%;
 `
 const FeatherIcon = styled(Feather)`
     width:20px;

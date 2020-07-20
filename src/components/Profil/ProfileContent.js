@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import Tweet from "../components/Tweet";
+import Tweet from "../Tweet";
 
 const ProfileContent = () => {
     // const [bottomColor, setBottomColor] = useState(false);
@@ -75,5 +75,4 @@ const Tweets = styled.div`
     display:flex;
     flex-direction:column;
     flex-shrink:0;
-
 `;
