@@ -5,6 +5,7 @@ import PostSuggestion from "./PostSuggestion";
 import FollowSuggestion from "./FollowSuggestion";
 
 const SideBar = () => {
+    const isIcon = true;
     return (
         <Container>
             <SearchBar>
@@ -13,7 +14,7 @@ const SideBar = () => {
             </SearchBar>
             <Body>
                 <FollowSuggestion />
-                <PostSuggestion />
+                <PostSuggestion isIcon={isIcon} />
             </Body>
         </Container>
     )

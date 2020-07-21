@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { css } from "styled-components";
 import { Settings2Outline, ChevronDown } from "../styles/icons";
 
-const PostSuggestion = () => {
+const PostSuggestion = ({ isIcon }) => {
     const posts = [
         {
             id: "1",
@@ -21,14 +21,29 @@ const PostSuggestion = () => {
             Title: "Türkiye tarihinde gündemde",
             Tag: "#twitterhacked",
             Count: 43.9 + " B",
-        }
+        },
+        {
+            id: "4",
+            Title: "Türkiye tarihinde gündemde",
+            Tag: "Cemal Metin Avcı",
+            Count: 13 + " B",
+        },
+        {
+            id: "5",
+            Title: "Türkiye tarihinde gündemde",
+            Tag: "#gabaryanıyor",
+            Count: 6394,
+        },
     ]
+    let css = ""
+    isIcon ? css += "border" : css = "";
+
     return (
-        <Container>
+        <Container className={css}>
             <Item>
                 <Title>
                     <span>İlgini çekebilecek gündemler</span>
-                    <div className="icon"><Settings /></div>
+                    {isIcon && <div className="icon"><Settings /></div>}
                 </Title>
             </Item>
             {posts.map(item => {
@@ -51,7 +66,9 @@ const Container = styled.div`
     display:flex;
     flex-direction:column;
     background:var(--secondary);
-    border-radius:14px;
+    &.border{
+        border-radius:14px;
+    }
 `
 
 const Item = styled.div`

@@ -60,7 +60,7 @@ const Links = styled.ul`
         padding:20px 0;
         flex-basis:auto;
         cursor:pointer;
-
+        
         &:hover{
             color:var(--twitter);
             background:var(--twitter-dark-hover);

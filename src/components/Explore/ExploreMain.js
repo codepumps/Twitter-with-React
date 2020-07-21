@@ -1,8 +1,11 @@
 import React from 'react'
 import styled from "styled-components";
 import { Settings2Outline, SearchOutline } from "../../styles/icons";
+import covid from "../../images/covid19.jpg";
+import PostSuggestion from "../PostSuggestion";
 
 const ExploreMain = () => {
+    const isIcon = false;
     return (
         <>
             <Header>
@@ -17,6 +20,19 @@ const ExploreMain = () => {
                     <Settings />
                 </span>
             </Header>
+            <Event>
+                <Image src={covid} />
+                <Text>
+                    <div>
+                        <span>Kovid-19</span>
+                        <Point />
+                        <span>CANLI</span>
+                    </div>
+                    <strong>Türkiye'de Kovid-19 ile ilgili güncel gelişmeler</strong>
+                </Text>
+            </Event>
+            <BottomSpace />
+            <PostSuggestion isIcon={isIcon} />
         </>
     )
 }
@@ -91,4 +107,59 @@ const Settings = styled(Settings2Outline)`
     width:24px;
     height:24px;
 `
+const Event = styled.div`
+    width:100%;
+    height:auto; 
+    position:relative;
+    &::after{
+        content:"";
+        position:absolute;
+        width:100%;
+        height:100%;
+        left:0;
+        bottom:0;
+        box-shadow:inset 0 -150px 150px rgb(32, 35, 39);
+        z-index:1;  
+    }
+    border-bottom:1px solid var(--outline);
+    cursor:pointer;
+`
+const Image = styled.img`
+    width:100%;
+    height:100%;
+`
+const Text = styled.div`
+    position:absolute;
+    left:15px;
+    bottom:20px;
+    z-index:3;
+    color:#ffffff;
+    >div{
+        display:flex;
+        align-items:center;
+        justify-content:flex-start;
+        font-size:12px;
 
+        >span{
+            font-weight:500;
+        }
+    }
+    >strong{
+        font-size:23px;
+        font-weight:900;
+    }
+`
+const Point = styled.div`
+    width:2px;
+    height:2px;
+    border-radius:50%;
+    background:var(--white);
+    margin:0 4px;    
+`
+
+const BottomSpace = styled.div`
+    width:100%;
+    height:10px;
+    top:-3px;
+    background:rgb(32, 35, 39);
+`

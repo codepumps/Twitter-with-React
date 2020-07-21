@@ -1,8 +1,8 @@
 import React from 'react'
-
+import NotificationMain from "../components/Notifications/NotificationMain";
 const Notifications = () => {
     return (
-        <h2>Notifications page</h2>
+        <NotificationMain />
     )
 }
 
