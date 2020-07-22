@@ -1,8 +1,8 @@
 import React from 'react'
-
+import ListsMain from "../components/Lists/ListsMain";
 const Lists = () => {
     return (
-        <h2>Lists page</h2>
+        <ListsMain />
     )
 }
 

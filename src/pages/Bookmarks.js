@@ -1,8 +1,9 @@
 import React from 'react'
+import BookmarksMain from "../components/Bookmarks/BookmarksMain";
 
 const Bookmarks = () => {
     return (
-        <h2>Bookmarks page</h2>
+        <BookmarksMain />
     )
 }
 

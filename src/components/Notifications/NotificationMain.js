@@ -45,7 +45,7 @@ const NotificationMain = () => {
             parent.children[i].children[0].className = "";
         }
         e.target.className += "active";
-
+        console.log(e.target.text);
         if (e.target.text === "Tümü") {
             setState(true)
         }
@@ -56,19 +56,21 @@ const NotificationMain = () => {
     return (
         <>
             <Header>
-                <span>Bildirimler</span>
-                <div>
-                    <SettingsIcon />
+                <div className="top-menu">
+                    <span>Bildirimler</span>
+                    <div>
+                        <SettingsIcon />
+                    </div>
                 </div>
+                <Links>
+                    <li>
+                        <Link className="active" onClick={(e) => { handleClick(e) }} to={`${match.url}`}>Tümü</Link>
+                    </li>
+                    <li>
+                        <Link onClick={(e) => { handleClick(e) }} to={`${match.url}/mentions`}>Bahsedenler</Link>
+                    </li>
+                </Links>
             </Header>
-            <Links>
-                <li>
-                    <Link className="active" onClick={(e) => { handleClick(e) }} to={`${match.url}`}>Tümü</Link>
-                </li>
-                <li>
-                    <Link onClick={(e) => { handleClick(e) }} to={`${match.url}/mentions`}>Bahsedenler</Link>
-                </li>
-            </Links>
             {
                 state ?
                     <Notifications>
@@ -118,27 +120,34 @@ export default NotificationMain
 
 const Header = styled.div`
     display:flex;
-    justify-content:space-between;
-    align-items:center;
+    flex-direction:column;
+    justify-content:center;
     position:sticky;
     top:0;
     z-index:2;
     background:var(--primary);
-    padding:8px 15px;
-    /* border-bottom:1px solid var(--outline); */
-    >span{
-        font-weight:900;
-        font-size:19px;
-    }
-    >div{
-        cursor:pointer;
-        padding:6px;
-        border-radius:50%;
 
-        &:hover{
-            background:var(--twitter-dark-hover);
+    >div.top-menu{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:8px 15px;
+
+        >span{
+            font-weight:900;
+            font-size:19px;
+        }
+        >div{
+            cursor:pointer;
+            padding:6px;
+            border-radius:50%;
+
+            &:hover{
+                background:var(--twitter-dark-hover);
+            }
         }
     }
+    
 `;
 
 const SettingsIcon = styled(Settings2Outline)`
@@ -154,7 +163,6 @@ const Links = styled.ul`
     justify-content:center;
     text-align:center;
     list-style-type:none;
-    /* margin-top:17px; */
     border-bottom:1px solid var(--profile-background);
     >li{
         >a{
@@ -171,7 +179,7 @@ const Links = styled.ul`
             }
             &.active{
                 color:var(--twitter);
-                border-bottom:3px solid var(--twitter);
+                border-bottom:2px solid var(--twitter);
                 }
             }
     }

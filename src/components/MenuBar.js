@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
-import { Twitter, HomeCircle, Hash, BellOutline, Email, BookmarkOutline, Person, FileList2, MoreHorizantalIcon, Feather, ChevronDown } from "../styles/icons";
+import { Twitter, HomeCircle, Hash, BellOutline, Email, BookmarkOutline, Person, FileList2, MoreHorizantalIcon, Feather, ChevronDown, MenubarHomeIcon } from "../styles/icons";
 import Button from "../components/Button";
 import profile from "../images/profile.jpg"
 
@@ -9,9 +9,12 @@ const MenuBar = () => {
     return (
         <Container>
             <TopSide>
-                <Logo />
+                <Link to="/home">
+                    <Logo />
+                </Link>
                 <Link to="/home">
                     <MenuButton>
+                        {/* <MenubarHomeIcon /> */}
                         <HomeIcon />
                         <span>
                             Anasayfa
@@ -166,6 +169,7 @@ const TweetleBtn = styled(Button)`
     justify-content:center;
     align-items:center;
     width:100%;
+    padding:16px;
     >svg{
         display:none;
     }
