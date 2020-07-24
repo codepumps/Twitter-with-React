@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
-import { Twitter, HomeCircle, Hash, BellOutline, Email, BookmarkOutline, Person, FileList2, MoreHorizantalIcon, Feather, ChevronDown, MenubarHomeIcon } from "../styles/icons";
+import { Twitter, HomeCircle, Hash, BellOutline, Email, BookmarkOutline, Person, FileList2, MoreHorizantalIcon, Feather, ChevronDown } from "../styles/icons";
 import Button from "../components/Button";
 import profile from "../images/profile.jpg"
 

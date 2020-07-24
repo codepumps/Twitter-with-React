@@ -1,13 +1,14 @@
 import React from "react";
 //router
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 //styled components
-import styled from "styled-components";
 import GlobalStyles from "./styles/global";
 //components
 // import Main from "./components/Main";
-import MenuBar from "./components/MenuBar";
-import SideBar from "./components/SideBar";
+
+//Layouts
+import MainLayout from "./components/Layouts/Layout";
+import LoginLayout from "./components/Layouts/LoginLayout";
 
 //pages
 import Bookmarks from "./pages/Bookmarks";
@@ -17,74 +18,39 @@ import Lists from "./pages/Lists";
 import Messages from "./pages/Messages";
 import Notifications from "./pages/Notifications";
 import Profil from "./pages/Profil";
+import Login from "./pages/Login";
+
+const AppRoute = ({ page: Page, layout: Layout, ...rest }) => {
+  return (
+    <Route {...rest} render={props => (
+      <Layout>
+        <Page {...props} />
+      </Layout>
+    )} />
+  )
+}
 
 function App() {
   return (
     <>
       <Router>
-        <Container>
-          <Wrapper>
-            <MenuBar />
-
-            <Content>
-              <Switch>
-                <Route path="/home">
-                  <Home />
-                </Route>
-                <Route path="/explore">
-                  <Explore />
-                </Route>
-                <Route path="/notifications">
-                  <Notifications />
-                </Route>
-                <Route path="/messages">
-                  <Messages />
-                </Route>
-                <Route path="/bookmarks">
-                  <Bookmarks />
-                </Route>
-                <Route path="/lists">
-                  <Lists />
-                </Route>
-                <Route path="/profil">
-                  <Profil />
-                </Route>
-              </Switch>
-            </Content>
-
-            <SideBar />
-          </Wrapper>
-        </Container>
+        <Switch>
+          <Route exact path="/">
+            <Redirect to="/home" />
+          </Route>
+          <AppRoute path="/login" layout={LoginLayout} page={Login} />
+          <AppRoute path="/home" layout={MainLayout} page={Home} />
+          <AppRoute path="/explore" layout={MainLayout} page={Explore} />
+          <AppRoute path="/notifications" layout={MainLayout} page={Notifications} />
+          <AppRoute path="/messages" layout={MainLayout} page={Messages} />
+          <AppRoute path="/bookmarks" layout={MainLayout} page={Bookmarks} />
+          <AppRoute path="/lists" layout={MainLayout} page={Lists} />
+          <AppRoute path="/profil" layout={MainLayout} page={Profil} />
+        </Switch>
       </Router>
-
-
       <GlobalStyles />
     </>
   );
 }
 
 export default App;
-
-const Container = styled.div`
-    /* height:100vh; */
-    background:var(--primary);
-`
-
-const Wrapper = styled.div`
-    height:100%;
-    max-width:1280px;
-    margin:0 auto;
-    display:flex;
-    justify-content:center;
-`
-
-const Content = styled.div`
-    display:flex;
-    flex-direction:column;
-    width: min(601px, 100%);
-
-    @media(min-width:500px){
-        border-left:1px solid var(--profile-background);
-        border-right:1px solid var(--profile-background);
-    }
-`
