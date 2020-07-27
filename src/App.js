@@ -1,6 +1,6 @@
 import React from "react";
 //router
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //styled components
 import GlobalStyles from "./styles/global";
 //components
@@ -19,12 +19,14 @@ import Messages from "./pages/Messages";
 import Notifications from "./pages/Notifications";
 import Profil from "./pages/Profil";
 import Login from "./pages/Login";
+import BottomIconsMenu from "./components/BottomIconsMenu";
 
-const AppRoute = ({ page: Page, layout: Layout, ...rest }) => {
+const AppRoute = ({ page: Page, layout: Layout, ...rest }) => { // use different layout page.
   return (
     <Route {...rest} render={props => (
       <Layout>
         <Page {...props} />
+        <BottomIconsMenu />  {/*Bottom Menu for every page*/}
       </Layout>
     )} />
   )
@@ -35,10 +37,7 @@ function App() {
     <>
       <Router>
         <Switch>
-          <Route exact path="/">
-            <Redirect to="/home" />
-          </Route>
-          <AppRoute path="/login" layout={LoginLayout} page={Login} />
+          <AppRoute exact path="/" layout={LoginLayout} page={Login} />
           <AppRoute path="/home" layout={MainLayout} page={Home} />
           <AppRoute path="/explore" layout={MainLayout} page={Explore} />
           <AppRoute path="/notifications" layout={MainLayout} page={Notifications} />

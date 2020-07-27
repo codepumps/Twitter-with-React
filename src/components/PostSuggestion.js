@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { css } from "styled-components";
 import { Settings2Outline, ChevronDown } from "../styles/icons";
 
 const PostSuggestion = ({ isIcon }) => {
+    const [clicked, setClicked] = useState(false);
     const posts = [
         {
             id: "1",
@@ -34,10 +35,46 @@ const PostSuggestion = ({ isIcon }) => {
             Tag: "#gabaryanıyor",
             Count: 6394,
         },
+        {
+            id: "6",
+            Title: "Türkiye tarihinde gündemde",
+            Tag: "Come To Galatasaray",
+            Count: 4.853,
+        },
+        {
+            id: "7",
+            Title: "Dünya tarihinde gündemde",
+            Tag: "#SONDAKİKA",
+            Count: 3757,
+        },
+        {
+            id: "8",
+            Title: "Türkiye tarihinde gündemde",
+            Tag: "#altın",
+            Count: 72 + " B",
+        },
+        {
+            id: "9",
+            Title: "Türkiye tarihinde gündemde",
+            Tag: "#2021tayfa",
+            Count: 1213,
+        },
+        {
+            id: "10",
+            Title: "Türkiye tarihinde gündemde",
+            Tag: "Borsa Istanbul",
+            Count: 36.5 + "B",
+        },
     ]
     let css = ""
     isIcon ? css += "border" : css = "";
-
+    let items = [];
+    if (posts.length > 5) {
+        clicked ? items = posts.slice(0, 10) : items = posts.slice(0, 5);
+    }
+    else {
+        items = posts;
+    }
     return (
         <Container className={css}>
             <Item>
@@ -46,16 +83,25 @@ const PostSuggestion = ({ isIcon }) => {
                     {isIcon && <div className="icon"><Settings /></div>}
                 </Title>
             </Item>
-            {posts.map(item => {
-                return <Item key={item.id}>
-                    <div>
-                        <span>{item.Title}</span>
-                        <div className="icon">< DownIcon /></div>
-                    </div>
-                    <span>{item.Tag}</span>
-                    <span>{item.Count} Tweet</span>
-                </Item>
-            })}
+            {
+                items.length > 0 &&
+                items.map(item => {
+                    return <Item key={item.id}>
+                        <div>
+                            <span>{item.Title}</span>
+                            <div className="icon">< DownIcon /></div>
+                        </div>
+                        <span>{item.Tag}</span>
+                        <span>{item.Count} Tweet</span>
+                    </Item>
+                })
+            }
+            {
+                posts.length > 5 ?
+                    <Item className={clicked ? "none" : null} onClick={() => setClicked(true)}>
+                        <button>Daha fazla göster</button>
+                    </Item> : null
+            }
         </Container>
     )
 }
@@ -126,6 +172,19 @@ const Item = styled.div`
         background:#191e23;
     }
     
+    &.none{
+        display:none;
+    }
+    >button{
+        text-align:left;
+        cursor:pointer;
+        font-weight:400;
+        font-size:16px;
+        overflow-wrap: break-word;
+        line-height:1.3125;
+        color:var(--twitter);
+        outline:none;
+    }
     
 `
 const Title = styled.section`

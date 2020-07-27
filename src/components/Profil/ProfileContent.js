@@ -37,31 +37,51 @@ const ProfileContent = () => {
     }
     const tweets = [
         {
-            id: "1"
+            id: 1,
+            retweet: false,
+            name: "Selman Kahya",
+            mail: "@selmankahya",
+            time: "15 May",
+            description: "JavaScript, yaygın olarak web tarayıcılarında kullanılmakta olan bir betik dilidir. JavaScript ile yazılan istemci tarafı betikler sayesinde tarayıcının kullanıcıyla etkileşimde bulunması, tarayıcının kontrol edilmesi, asenkron bir şekilde sunucu ile iletişime geçilmesi ve web sayfası içeriğinin değiştirilmesi gibi işlevler sağlanır. JavaScript, Node.js gibi platformlar sayesinde sunucu tarafında da yaygın olarak kullanılmaktadır.",
+            image: {
+                status: true,
+                image: "../img/1.jpg"
+            },
+            comment: 72,
+            retweetCount: 100,
+            like: 360
         },
         {
-            id: "2"
+            id: 2,
+            retweet: true,
+            name: "Hatice Edis",
+            mail: "@haticedis",
+            time: "17 Şub",
+            description: "İşaretleme dili olan Html, web sayfalarının hazırlanmasında kullanılan sistemdir. Bir programlama dili olmayan Html bilgisayarlarımızda kullandığımız web sitelerinin oluşturulmasında kullanılır. Chrome, Fİrefox ve İnternet Explorer gibi tarayıcılar html kodlarını işleyerek bu kodları web sayfasına dönüştürür.",
+            image: {
+                status: false,
+                image: ""
+            },
+            comment: 50,
+            retweetCount: 70,
+            like: 128
         },
         {
-            id: "3"
-        },
-        {
-            id: "4"
-        },
-    ]
-    const likedTweets = [
-        {
-            id: "1"
-        },
-        {
-            id: "2"
-        },
-        {
-            id: "3"
-        },
-        {
-            id: "4"
-        },
+            id: 3,
+            retweet: true,
+            name: "Atakan Karabağlar",
+            mail: "@atakankrbglar",
+            time: "3 Kas",
+            description: "Bilindiği üzere HTML metin biçimlendirme konusunda sitenin birçok farklı noktası adına fazla seçenek imkânı verir. CSS programı ise bu seçeneği daha üst düzey geniş bir çapta, fırsat olanakları ile sunmaktadır. Uzun ismi ile (Cascading Style Sheets) olarak bilinen ve Türkçe anlamı olarak ise Stil Şablon adıyla isimlendirilmiş bu sistem site bünyesindeki her sayfa adına daha geniş bir seçenek dünyası içerisinde evrensel şablonlar hazırlama olanağı verir.",
+            image: {
+                status: true,
+                image: ""
+            },
+            comment: 158,
+            retweetCount: 879,
+            like: 1256
+        }
+
     ]
     return (
         <Container>
@@ -85,7 +105,7 @@ const ProfileContent = () => {
                 {
                     linkStates.Tweet &&
                     tweets.map((tweet) => {
-                        return <Tweet key={tweet.id} />
+                        return <Tweet key={tweet.id} tweet={tweet} />
                     })
                 }
                 {
@@ -110,8 +130,8 @@ const ProfileContent = () => {
                 }
                 {
                     linkStates.like &&
-                    likedTweets.map((tweet) => {
-                        return <Tweet key={tweet.id} />
+                    tweets.map((tweet) => {
+                        return <Tweet key={tweet.id} tweet={tweet} />
                     })
                 }
 

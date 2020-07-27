@@ -5,6 +5,38 @@ import Tweet from "../Tweet";
 
 
 const BookmarksMain = () => {
+    const tweets = [
+        {
+            id: 1,
+            retweet: false,
+            name: "Selman Kahya",
+            mail: "@selmankahya",
+            time: "15 May",
+            description: "JavaScript, yaygın olarak web tarayıcılarında kullanılmakta olan bir betik dilidir. JavaScript ile yazılan istemci tarafı betikler sayesinde tarayıcının kullanıcıyla etkileşimde bulunması, tarayıcının kontrol edilmesi, asenkron bir şekilde sunucu ile iletişime geçilmesi ve web sayfası içeriğinin değiştirilmesi gibi işlevler sağlanır. JavaScript, Node.js gibi platformlar sayesinde sunucu tarafında da yaygın olarak kullanılmaktadır.",
+            image: {
+                status: true,
+                image: "../img/1.jpg"
+            },
+            comment: 72,
+            retweetCount: 100,
+            like: 360
+        },
+        {
+            id: 2,
+            retweet: true,
+            name: "Hatice Edis",
+            mail: "@haticedis",
+            time: "17 Şub",
+            description: "İşaretleme dili olan Html, web sayfalarının hazırlanmasında kullanılan sistemdir. Bir programlama dili olmayan Html bilgisayarlarımızda kullandığımız web sitelerinin oluşturulmasında kullanılır. Chrome, Fİrefox ve İnternet Explorer gibi tarayıcılar html kodlarını işleyerek bu kodları web sayfasına dönüştürür.",
+            image: {
+                status: false,
+                image: ""
+            },
+            comment: 50,
+            retweetCount: 70,
+            like: 128
+        },
+    ]
     return (
         <>
             <Header>
@@ -17,8 +49,12 @@ const BookmarksMain = () => {
                 </span>
             </Header>
             <Tweets>
-                <Tweet />
-                <Tweet />
+                {
+                    !!tweets &&
+                    tweets.map(tweet => {
+                        return <Tweet key={tweet.id} tweet={tweet} />
+                    })
+                }
             </Tweets>
         </>
     )

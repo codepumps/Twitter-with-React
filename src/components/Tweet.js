@@ -2,43 +2,64 @@ import React from 'react'
 import styled, { css } from "styled-components";
 import { Retweet, Heart, Comment, SaveAlt, ChevronDown } from "../styles/icons";
 
-const Tweet = () => {
+const Tweet = ({ tweet }) => {
     return (
         <Container>
-            <Retweeted>
-                <RetweetIcon style={{ width: "15px", height: "15px", marginLeft: "35px", marginRight: "9px" }} />
-                <span>Retweetledin</span>
-            </Retweeted>
+            {
+                tweet.retweet ?
+                    <Retweeted>
+                        <RetweetIcon style={{ width: "15px", height: "15px", marginLeft: "35px", marginRight: "9px" }} />
+                        <span>Retweetledin</span>
+                    </Retweeted>
+                    : null
+            }
+
 
             <Body>
                 <Avatar />
                 <Content>
                     <Header>
-                        <strong>Vural Uçar</strong>
-                        <span>@vuralucarhd</span>
+                        <strong>{tweet.name}</strong>
+                        <span>{tweet.mail}</span>
                         <Point />
-                        <time>21 Nis</time>
+                        <time>{tweet.time}</time>
                         <DownIcon />
                     </Header>
                     <Description>
-                        React; Facebook tarafından üretilmiş, kullanıcı ara yüzleri oluşturmak için kullanılan bir javascript kütüphanesidir. React bir framework değil, belirttiğim gibi bir kütüphanedir.
+                        {tweet.description}
                     </Description>
-                    <ImgContent />
+                    {
+                        tweet.image.status ? <ImgContent /> : null
+                    }
                     <Icons>
                         <Status>
-                            <CommentIcon />
-                                72
+                            <span className="icon icon-comment">
+                                <CommentIcon />
+                            </span>
+                            <span className="comment-text">
+                                {tweet.comment}
+                            </span>
                         </Status>
                         <Status>
-                            <RetweetIcon />
-                                110
+                            <span className="icon icon-retweet">
+                                <RetweetIcon />
+                            </span>
+                            <span className="retweet-text">
+                                {tweet.retweetCount}
+                            </span>
                         </Status>
                         <Status>
-                            <LikeIcon />
-                                256
+                            <span className="icon icon-like">
+                                <LikeIcon />
+                            </span>
+                            <span className="like-text">
+                                {tweet.like}
+                            </span>
                         </Status>
                         <Status>
-                            <SaveAltIcon />
+                            <span className="icon icon-comment">
+                                <SaveAltIcon />
+                            </span>
                         </Status>
                     </Icons>
                 </Content>
@@ -134,7 +155,7 @@ const Icons = styled.div`
     justify-content:space-between;
     align-items:center;
     flex-flow:row wrap;
-    margin:10px 0;
+    padding:10px 0;
     width:85%;
 `;
 const Status = styled.div`
@@ -143,16 +164,39 @@ const Status = styled.div`
     cursor:pointer;
     font-size:14px;
     color:var(--gray);
-    &:nth-child(2){
-        color:var(--retweet);
-        >svg{
-            fill:var(--retweet);
-        }
+
+    >span.icon{
+        padding:3px;
+        border-radius:50%;
+        margin-right:5px;
     }
-    &:nth-child(3){
-        color:var(--like);
-        >svg{
-            fill:var(--like);
+    &:hover{
+        >span.icon-comment{
+            background: #162632;
+            >svg{
+                fill:var(--twitter);
+            }
+        }
+        >span.comment-text{
+            color:var(--twitter);
+        }
+        >span.icon-like{
+            background:#571c32;
+            >svg{
+                fill:var(--like);
+            }
+        }
+        >span.like-text{
+            color:var(--like);
+        }
+        >span.icon-retweet{
+            background:#152923;
+            >svg{
+                fill:var(--retweet);
+            }
+        }
+        >span.retweet-text{
+            color:var(--retweet);
         }
     }
 `;
@@ -160,7 +204,6 @@ const Status = styled.div`
 const iconCommonCss = css`
     width:24px;
     height:24px;
-    margin-right:5px;
     fill:var(--gray);
 `;
 const RetweetIcon = styled(Retweet)`
@@ -168,15 +211,9 @@ const RetweetIcon = styled(Retweet)`
 `;
 const LikeIcon = styled(Heart)`
     ${iconCommonCss};
-    &:hover{
-        fill:var(--like);
-    }
 `;
 const CommentIcon = styled(Comment)`
     ${iconCommonCss};
-    &:hover{
-        fill:var(--twitter);
-    }
 `;
 const SaveAltIcon = styled(SaveAlt)`
     ${iconCommonCss};

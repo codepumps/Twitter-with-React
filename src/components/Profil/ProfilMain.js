@@ -1,6 +1,6 @@
 import React from 'react'
-import styled, { css } from "styled-components";
-import { ArrowLeft, Email, SearchOutline, Notifications, HomeCircle } from "../../styles/icons";
+import styled from "styled-components";
+import { ArrowLeft } from "../../styles/icons";
 import ProfilePage from "./ProfilePage";
 const Main = () => {
     return (
@@ -21,29 +21,11 @@ const Main = () => {
 
             {/* Profile Bottom Icons */}
 
-            <BottomIcons>
-                <HomeIcon className="active" />
-                <SearchIcon />
-                <BellIcon />
-                <EmailIcon />
-            </BottomIcons>
         </>
     )
 }
 
 export default Main
-
-
-// const Container = styled.div`
-//     display:flex;
-//     flex-direction:column;
-//     width: min(601px, 100%);
-
-//     @media(min-width:500px){
-//         border-left:1px solid var(--profile-background);
-//         border-right:1px solid var(--profile-background);
-//     }
-// `
 
 const Header = styled.div`
     z-index:2;
@@ -86,45 +68,45 @@ const ProfileInfo = styled.div`
     }
 `
 
-const BottomIcons = styled.div`
-    position:fixed;
-    bottom:0;
-    width:100%;
-    display:flex;
-    left:0;
-    justify-content:space-between;
-    background:var(--primary);
-    border-top:1px solid var(--outline);
-    padding:8px;
-    @media(min-width:500px){
-        display:none;
-    }
+// const BottomIcons = styled.div`
+//     position:fixed;
+//     bottom:0;
+//     width:100%;
+//     display:flex;
+//     left:0;
+//     justify-content:space-between;
+//     background:var(--primary);
+//     border-top:1px solid var(--outline);
+//     padding:8px;
+//     @media(min-width:500px){
+//         display:none;
+//     }
 
-`
-const iconCommonCss = css`
-    width:28px;
-    height:28px;
-    cursor:pointer;
-    fill:var(--gray);
+// `
+// const iconCommonCss = css`
+//     width:28px;
+//     height:28px;
+//     cursor:pointer;
+//     fill:var(--gray);
 
-    &:hover,
-    &.active{
-        fill:var(--twitter);
-    }
-`;
+//     &:hover,
+//     &.active{
+//         fill:var(--twitter);
+//     }
+// `;
 
-const HomeIcon = styled(HomeCircle)`
-    ${iconCommonCss}
-`
-const EmailIcon = styled(Email)`
-    ${iconCommonCss}
+// const HomeIcon = styled(HomeCircle)`
+//     ${iconCommonCss}
+// `
+// const EmailIcon = styled(Email)`
+//     ${iconCommonCss}
 
-`
-const SearchIcon = styled(SearchOutline)`
-    ${iconCommonCss}
+// `
+// const SearchIcon = styled(SearchOutline)`
+//     ${iconCommonCss}
 
-`
-const BellIcon = styled(Notifications)`
-    ${iconCommonCss}
+// `
+// const BellIcon = styled(Notifications)`
+//     ${iconCommonCss}
 
-`
+// `

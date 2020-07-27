@@ -141,11 +141,11 @@ const RightGrid = styled.div`
                     display:flex;
                     flex-direction:column;
                     background:rgb(245, 248, 250);
-                    &+input:focus{
+                    /* &+input:focus{
                         >span{
                             color:#33A1F2;
                         }
-                    }
+                    } */
                     >input{
                         border-bottom:1.5px solid var(--gray);
                         padding:0 10px;
@@ -211,6 +211,7 @@ const RightContent = styled.div`
     justify-content:center;
     align-items:center;
     margin:120px auto;
+    padding:0 20px;
     >div.container{
         display:flex;
         flex-direction:column;
@@ -234,18 +235,34 @@ const RightContent = styled.div`
         >div.buttons{
             display:flex;
             flex-direction:column;
-
+            width:100%;
             >button{
                 font-size:15px;
                 font-weight:bold;
                 line-height: 1;
+                width:100%;
                 min-width: calc(62.79px);
                 min-height: 39px;
                 cursor:pointer;
                 border-radius: 9999px;
+                outline:0;
+
             }
             >button.btn-register{
-                background:
+                background:#1A91DA;
+                color:rgb(255,255,255);
+                margin-bottom:15px;
+                &:hover{
+                    background:#0b7bbc;
+                }
+            }
+            >button.btn-login{
+                background:transparent;
+                border:1px solid #1A91DA;
+                color:#1A91DA;
+                &:hover{
+                    background:#E8F5FE;
+                }
             }
         }
     }

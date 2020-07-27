@@ -1,11 +1,22 @@
 import React from 'react'
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
-import { Twitter, HomeCircle, Hash, BellOutline, Email, BookmarkOutline, Person, FileList2, MoreHorizantalIcon, Feather, ChevronDown } from "../styles/icons";
+import { Twitter, Hash, BellOutline, Email, BookmarkOutline, Person, FileList2, MoreHorizantalIcon, ChevronDown, MenubarTweetIcon, MenubarHomeIcon } from "../styles/icons";
 import Button from "../components/Button";
 import profile from "../images/profile.jpg"
 
 const MenuBar = () => {
+    // const [value, setValue] = useState('');
+    // const [changeBackground, setChangeBackground] = useState({
+    //     home: true,
+    //     explore: false,
+    //     notification: false,
+    //     message: false,
+    //     bookmark: false,
+    //     lists: false,
+    //     profile: false,
+    //     moreIcon: false
+    // })
     return (
         <Container>
             <TopSide>
@@ -13,18 +24,17 @@ const MenuBar = () => {
                     <Logo />
                 </Link>
                 <Link to="/home">
-                    <MenuButton>
-                        {/* <MenubarHomeIcon /> */}
-                        <HomeIcon />
+                    <MenuButton className="active specialIcon">
+                        <MenubarHomeIcon />
+                        {/* <HomeIcon /> */}
                         <span>
                             Anasayfa
-                    </span>
+                        </span>
                     </MenuButton>
                 </Link>
                 <Link to="/explore">
                     <MenuButton>
                         <HashIcon />
-
                         <span>Keşfet</span>
                     </MenuButton>
                 </Link>
@@ -55,12 +65,12 @@ const MenuBar = () => {
                     </MenuButton>
                 </Link>
                 <Link to="/profil">
-                    <MenuButton className="active">
+                    <MenuButton>
                         <PersonIcon />
                         <span>Profil</span>
                     </MenuButton>
                 </Link>
-                <MenuButton className="moreIcon">
+                <MenuButton className="specialIcon">
                     <MoreHorizantalIcon />
                     <span>Daha Fazla</span>
                 </MenuButton>
@@ -70,7 +80,7 @@ const MenuBar = () => {
                     btnBorder: "none",
                     hoverMain: "var(--twitter-light-hover)"
                 }}>
-                    <FeatherIcon />
+                    <MenubarTweetIcon />
                     <span>Tweetle</span>
                 </TweetleBtn>
             </TopSide>
@@ -96,7 +106,7 @@ const Container = styled.div`
         display:flex;
         flex-direction:column;
         justify-content:space-between;
-        
+
         position:sticky;
         top:0;
         left:0;
@@ -118,7 +128,7 @@ const TopSide = styled.div`
         align-items:flex-start;
     }
     padding-right:15px;
-    
+
 `
 const MenuButton = styled.div`
     display:flex;
@@ -138,31 +148,37 @@ const MenuButton = styled.div`
     padding:12px 6px;
     cursor:pointer;
     border-radius:25px;
+    >svg{
+        fill:var(--white);
+    }
     &:hover{
         background:var(--twitter-dark-hover);
     }
     &:hover,
     &.active{
-        >span,svg{
+        >svg{
+            fill:var(--twitter);
+        }
+        >span{
             color:var(--twitter);
+        }
+
+    }
+    &.specialIcon{
+        >svg{
+            /* fill: var(--white); */
+            width: 1.8em;
+            height: 1.5em;
+            margin-left: 3px;
+        }
+    }
+    &.specialIcon:hover{
+        >svg{
             fill:var(--twitter);
         }
-        
     }
-    &.moreIcon{
-        >svg{
-            fill:#fff;
-            margin-top:3px;
-            margin-left:3px;
-        }
-    }
-    &.moreIcon:hover{
-        >svg{
-            fill:var(--twitter);
-        }
-    }
-    
-    
+
+
 `
 const TweetleBtn = styled(Button)`
     display:flex;
@@ -236,10 +252,7 @@ const Logo = styled(Twitter)`
     >svg{
         fill:var(--twitter);
     }
-    
-`
-const HomeIcon = styled(HomeCircle)`
-    ${iconCommonCss}
+
 `
 const HashIcon = styled(Hash)`
     ${iconCommonCss}
@@ -258,10 +271,6 @@ const PersonIcon = styled(Person)`
 `
 const FileListIcon = styled(FileList2)`
     ${iconCommonCss}
-`
-const FeatherIcon = styled(Feather)`
-    width:20px;
-    height:20px;
 `
 const DownIcon = styled(ChevronDown)`
     display:none;
