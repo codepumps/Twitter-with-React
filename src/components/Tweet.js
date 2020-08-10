@@ -1,8 +1,40 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 import styled, { css } from "styled-components";
 import { Retweet, Heart, Comment, SaveAlt, ChevronDown } from "../styles/icons";
 
+
 const Tweet = ({ tweet }) => {
+    console.log(tweet);
+    const initialState = {
+        like: tweet.like,
+        retweet: tweet.retweetCount,
+        isLike: tweet.isLike,
+        isRetweet: tweet.isRetweet
+    }
+
+    function reducer(state, action) {
+        switch (action) {
+            case 'increment-like':
+                return { ...state, like: state.like + 1, isLike: true };
+            case 'increment-retweet':
+                return { ...state, retweet: state.retweet + 1, isRetweet: true };
+            case 'decrement-like':
+                return { ...state, like: state.like - 1, isLike: false };
+            case 'decrement-retweet':
+                return { ...state, retweet: state.retweet - 1, isRetweet: false };
+            default:
+                return state;
+        }
+    }
+
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    const handleLike = () => {
+        state.isLike ? dispatch('decrement-like') : dispatch('increment-like')
+    }
+    const handleRetweet = () => {
+        state.isRetweet ? dispatch('decrement-retweet') : dispatch('increment-retweet')
+    }
     return (
         <Container>
             {
@@ -13,8 +45,6 @@ const Tweet = ({ tweet }) => {
                     </Retweeted>
                     : null
             }
-
-
             <Body>
                 <Avatar />
                 <Content>
@@ -40,20 +70,20 @@ const Tweet = ({ tweet }) => {
                                 {tweet.comment}
                             </span>
                         </Status>
-                        <Status>
+                        <Status className={state.isRetweet ? "active-retweet" : null} onClick={handleRetweet}>
                             <span className="icon icon-retweet">
                                 <RetweetIcon />
                             </span>
                             <span className="retweet-text">
-                                {tweet.retweetCount}
+                                {state.retweet}
                             </span>
                         </Status>
-                        <Status>
+                        <Status className={state.isLike ? "active-like" : null} onClick={handleLike}>
                             <span className="icon icon-like">
                                 <LikeIcon />
                             </span>
                             <span className="like-text">
-                                {tweet.like}
+                                {state.like}
                             </span>
                         </Status>
                         <Status>
@@ -169,6 +199,29 @@ const Status = styled.div`
         padding:3px;
         border-radius:50%;
         margin-right:5px;
+    }
+    &.active-like{
+        >span.icon-like{
+            >svg{
+                fill:var(--like);
+                >path{
+                    background:var(--like);
+                }
+            }
+        }
+        >span.like-text{
+            color:var(--like);
+        }
+    }
+    &.active-retweet{
+        >span.icon-retweet{
+            >svg{
+                fill:var(--retweet);
+            }   
+        }
+        >span.retweet-text{
+            color:var(--retweet);
+        }
     }
     &:hover{
         >span.icon-comment{

@@ -1,15 +1,75 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "../Button";
 import { HomeStarIcon, HomeChatGalery, HomeChatDate, HomeChatGif, HomeChatSmile, HomeChatSurvey } from "../../styles/icons";
 import profile from "../../images/profile.jpg";
 import Tweet from "../Tweet";
+import Loading from "../Loading";
 
 const HomeMain = () => {
-    const tweets = [
+    const [postList, setPostList] = useState({
+        initialPosts: [
+            {
+                id: 1,
+                retweet: false,
+                name: "Selman Kahya",
+                mail: "@selmankahya",
+                time: "15 May",
+                description: "JavaScript, yaygın olarak web tarayıcılarında kullanılmakta olan bir betik dilidir. JavaScript ile yazılan istemci tarafı betikler sayesinde tarayıcının kullanıcıyla etkileşimde bulunması, tarayıcının kontrol edilmesi, asenkron bir şekilde sunucu ile iletişime geçilmesi ve web sayfası içeriğinin değiştirilmesi gibi işlevler sağlanır. JavaScript, Node.js gibi platformlar sayesinde sunucu tarafında da yaygın olarak kullanılmaktadır.",
+                image: {
+                    status: true,
+                    image: "../img/1.jpg"
+                },
+                comment: 72,
+                retweetCount: 100,
+                like: 360,
+                isLike: false,
+                isRetweet: false
+            },
+            {
+                id: 2,
+                retweet: true,
+                name: "Hatice Edis",
+                mail: "@haticedis",
+                time: "17 Şub",
+                description: "İşaretleme dili olan Html, web sayfalarının hazırlanmasında kullanılan sistemdir. Bir programlama dili olmayan Html bilgisayarlarımızda kullandığımız web sitelerinin oluşturulmasında kullanılır. Chrome, Fİrefox ve İnternet Explorer gibi tarayıcılar html kodlarını işleyerek bu kodları web sayfasına dönüştürür.",
+                image: {
+                    status: false,
+                    image: ""
+                },
+                comment: 50,
+                retweetCount: 70,
+                like: 128,
+                isLike: false,
+                isRetweet: false
+            },
+            {
+                id: 3,
+                retweet: true,
+                name: "Atakan Karabağlar",
+                mail: "@atakankrbglar",
+                time: "3 Kas",
+                description: "Bilindiği üzere HTML metin biçimlendirme konusunda sitenin birçok farklı noktası adına fazla seçenek imkânı verir. CSS programı ise bu seçeneği daha üst düzey geniş bir çapta, fırsat olanakları ile sunmaktadır. Uzun ismi ile (Cascading Style Sheets) olarak bilinen ve Türkçe anlamı olarak ise Stil Şablon adıyla isimlendirilmiş bu sistem site bünyesindeki her sayfa adına daha geniş bir seçenek dünyası içerisinde evrensel şablonlar hazırlama olanağı verir.",
+                image: {
+                    status: true,
+                    image: ""
+                },
+                comment: 158,
+                retweetCount: 879,
+                like: 1256,
+                isLike: false,
+                isRetweet: false
+            },
+        ]
+    });
+    // tracking on which page we currently are
+    const [page, setPage] = useState(1);
+    //add loader refrence
+    const loader = useRef(null);
+    const allData = [
         {
-            id: 1,
+            id: 4,
             retweet: false,
             name: "Selman Kahya",
             mail: "@selmankahya",
@@ -21,10 +81,12 @@ const HomeMain = () => {
             },
             comment: 72,
             retweetCount: 100,
-            like: 360
+            like: 360,
+            isLike: false,
+            isRetweet: false
         },
         {
-            id: 2,
+            id: 5,
             retweet: true,
             name: "Hatice Edis",
             mail: "@haticedis",
@@ -36,10 +98,12 @@ const HomeMain = () => {
             },
             comment: 50,
             retweetCount: 70,
-            like: 128
+            like: 128,
+            isLike: false,
+            isRetweet: false
         },
         {
-            id: 3,
+            id: 6,
             retweet: true,
             name: "Atakan Karabağlar",
             mail: "@atakankrbglar",
@@ -51,10 +115,147 @@ const HomeMain = () => {
             },
             comment: 158,
             retweetCount: 879,
-            like: 1256
+            like: 1256,
+            isLike: false,
+            isRetweet: false
+        },
+        {
+            id: 7,
+            retweet: false,
+            name: "Selman Kahya",
+            mail: "@selmankahya",
+            time: "15 May",
+            description: "JavaScript, yaygın olarak web tarayıcılarında kullanılmakta olan bir betik dilidir. JavaScript ile yazılan istemci tarafı betikler sayesinde tarayıcının kullanıcıyla etkileşimde bulunması, tarayıcının kontrol edilmesi, asenkron bir şekilde sunucu ile iletişime geçilmesi ve web sayfası içeriğinin değiştirilmesi gibi işlevler sağlanır. JavaScript, Node.js gibi platformlar sayesinde sunucu tarafında da yaygın olarak kullanılmaktadır.",
+            image: {
+                status: true,
+                image: "../img/1.jpg"
+            },
+            comment: 72,
+            retweetCount: 100,
+            like: 360,
+            isLike: false,
+            isRetweet: false
+        },
+        {
+            id: 8,
+            retweet: true,
+            name: "Hatice Edis",
+            mail: "@haticedis",
+            time: "17 Şub",
+            description: "İşaretleme dili olan Html, web sayfalarının hazırlanmasında kullanılan sistemdir. Bir programlama dili olmayan Html bilgisayarlarımızda kullandığımız web sitelerinin oluşturulmasında kullanılır. Chrome, Fİrefox ve İnternet Explorer gibi tarayıcılar html kodlarını işleyerek bu kodları web sayfasına dönüştürür.",
+            image: {
+                status: false,
+                image: ""
+            },
+            comment: 50,
+            retweetCount: 70,
+            like: 128,
+            isLike: false,
+            isRetweet: false
+        },
+        {
+            id: 9,
+            retweet: true,
+            name: "Atakan Karabağlar",
+            mail: "@atakankrbglar",
+            time: "3 Kas",
+            description: "Bilindiği üzere HTML metin biçimlendirme konusunda sitenin birçok farklı noktası adına fazla seçenek imkânı verir. CSS programı ise bu seçeneği daha üst düzey geniş bir çapta, fırsat olanakları ile sunmaktadır. Uzun ismi ile (Cascading Style Sheets) olarak bilinen ve Türkçe anlamı olarak ise Stil Şablon adıyla isimlendirilmiş bu sistem site bünyesindeki her sayfa adına daha geniş bir seçenek dünyası içerisinde evrensel şablonlar hazırlama olanağı verir.",
+            image: {
+                status: true,
+                image: ""
+            },
+            comment: 158,
+            retweetCount: 879,
+            like: 1256,
+            isLike: false,
+            isRetweet: false
+        },
+        {
+            id: 10,
+            retweet: false,
+            name: "Selman Kahya",
+            mail: "@selmankahya",
+            time: "15 May",
+            description: "JavaScript, yaygın olarak web tarayıcılarında kullanılmakta olan bir betik dilidir. JavaScript ile yazılan istemci tarafı betikler sayesinde tarayıcının kullanıcıyla etkileşimde bulunması, tarayıcının kontrol edilmesi, asenkron bir şekilde sunucu ile iletişime geçilmesi ve web sayfası içeriğinin değiştirilmesi gibi işlevler sağlanır. JavaScript, Node.js gibi platformlar sayesinde sunucu tarafında da yaygın olarak kullanılmaktadır.",
+            image: {
+                status: true,
+                image: "../img/1.jpg"
+            },
+            comment: 72,
+            retweetCount: 100,
+            like: 360,
+            isLike: false,
+            isRetweet: false
+        },
+        {
+            id: 11,
+            retweet: true,
+            name: "Hatice Edis",
+            mail: "@haticedis",
+            time: "17 Şub",
+            description: "İşaretleme dili olan Html, web sayfalarının hazırlanmasında kullanılan sistemdir. Bir programlama dili olmayan Html bilgisayarlarımızda kullandığımız web sitelerinin oluşturulmasında kullanılır. Chrome, Fİrefox ve İnternet Explorer gibi tarayıcılar html kodlarını işleyerek bu kodları web sayfasına dönüştürür.",
+            image: {
+                status: false,
+                image: ""
+            },
+            comment: 50,
+            retweetCount: 70,
+            like: 128,
+            isLike: false,
+            isRetweet: false
+        },
+        {
+            id: 12,
+            retweet: true,
+            name: "Atakan Karabağlar",
+            mail: "@atakankrbglar",
+            time: "3 Kas",
+            description: "Bilindiği üzere HTML metin biçimlendirme konusunda sitenin birçok farklı noktası adına fazla seçenek imkânı verir. CSS programı ise bu seçeneği daha üst düzey geniş bir çapta, fırsat olanakları ile sunmaktadır. Uzun ismi ile (Cascading Style Sheets) olarak bilinen ve Türkçe anlamı olarak ise Stil Şablon adıyla isimlendirilmiş bu sistem site bünyesindeki her sayfa adına daha geniş bir seçenek dünyası içerisinde evrensel şablonlar hazırlama olanağı verir.",
+            image: {
+                status: true,
+                image: ""
+            },
+            comment: 158,
+            retweetCount: 879,
+            like: 1256,
+            isLike: false,
+            isRetweet: false
         }
 
     ]
+
+    useEffect(() => {
+        var options = {
+            root: null,
+            rootMargin: "20px",
+            threshold: 1.0
+        };
+        // initialize IntersectionObserver
+        // and attaching to Load More div
+        const observer = new IntersectionObserver(handleObserver, options);
+        if (loader.current) {
+            observer.observe(loader.current)
+        }
+    }, []);
+
+    useEffect(() => {
+        // here we simulate adding new posts to List
+        const newList = postList.initialPosts.concat(allData);
+        setPostList({
+            initialPosts: newList
+        })
+    }, [page])
+
+    // here we handle what happens when user scrolls to Load More div
+    // in this case we just update page variable
+    const handleObserver = (entities) => {
+        // const y = entities[0].boundingClientRect.y;
+        const target = entities[0];
+        if (target.isIntersecting) {
+            setPage((page) => page + 1)
+        }
+    }
+
     return (
         <>
             <Header>
@@ -101,10 +302,13 @@ const HomeMain = () => {
             <BottomSpace />
             <Tweets>
                 {
-                    tweets.map(tweet => {
-                        return <Tweet key={tweet.id} tweet={tweet} />
-                    })
+                    postList.initialPosts.map(tweet => (
+                        <Tweet key={tweet.id} tweet={tweet} />
+                    ))
                 }
+                <div className="loading" ref={loader}>
+                    <Loading />
+                </div>
             </Tweets>
         </>
     )
@@ -168,12 +372,12 @@ const Text = styled.div`
         &::placeholder{
             color:var(--gray);
         }
-    }  
+    }
     >textarea:focus{
         &::placeholder{
             color:#A4A7AE;
         }
-    }  
+    }
 `
 const TextBottom = styled.div`
     display:flex;
@@ -214,4 +418,8 @@ const Tweets = styled.div`
     display:flex;
     flex-direction:column;
     flex-shrink:0;
+
+    >div.loading{
+        text-align:center;
+    }
 `;

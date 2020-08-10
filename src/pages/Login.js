@@ -82,6 +82,9 @@ const Grid = styled.div`
     display:flex;
     width:100%;
     height:100%;
+    @media(max-width:783px){
+        flex-direction:column-reverse;
+    }
 `
 const LeftGrid = styled.div`
     display:flex;
@@ -89,6 +92,10 @@ const LeftGrid = styled.div`
     justify-content:center;
     align-items:stretch;
     width:50%;
+    @media(max-width:783px){
+        width:100%;
+        height:260px;
+    }
     z-index:0;
     background:rgb(113, 201, 248);
     overflow:hidden;
@@ -106,6 +113,9 @@ const LeftGrid = styled.div`
         flex-direction:column;
         justify-content:center;
         align-items:flex-start;
+        @media(max-width:783px){
+            
+        }
         position:relative;
         z-index:3;
         >div{
@@ -126,6 +136,9 @@ const LeftGrid = styled.div`
 const RightGrid = styled.div`
     color:var(--twitter);
     width:50%;
+    @media(max-width:783px){
+        width:100%;
+    }
     >form{
         display:none;
         @media (min-width:980px){
@@ -207,7 +220,7 @@ const RightGrid = styled.div`
 
 const RightContent = styled.div`
     display:flex;
-    width:100%;
+    width:50%;
     justify-content:center;
     align-items:center;
     margin:120px auto;

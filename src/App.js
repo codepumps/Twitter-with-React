@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 //router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //styled components
@@ -22,17 +22,26 @@ import Login from "./pages/Login";
 import BottomIconsMenu from "./components/BottomIconsMenu";
 
 const AppRoute = ({ page: Page, layout: Layout, ...rest }) => { // use different layout page.
+  console.log();
   return (
     <Route {...rest} render={props => (
       <Layout>
         <Page {...props} />
-        <BottomIconsMenu />  {/*Bottom Menu for every page*/}
+        {
+          rest.path !== "/" && <BottomIconsMenu /> // use ıcons menu expect login page
+        }
       </Layout>
-    )} />
+    )
+    } />
   )
 }
 
 function App() {
+
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
+
   return (
     <>
       <Router>

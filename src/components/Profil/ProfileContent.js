@@ -49,7 +49,9 @@ const ProfileContent = () => {
             },
             comment: 72,
             retweetCount: 100,
-            like: 360
+            like: 360,
+            isLike: true,
+            isRetweet: false
         },
         {
             id: 2,
@@ -64,7 +66,9 @@ const ProfileContent = () => {
             },
             comment: 50,
             retweetCount: 70,
-            like: 128
+            like: 128,
+            isLike: true,
+            isRetweet: false
         },
         {
             id: 3,
@@ -79,7 +83,9 @@ const ProfileContent = () => {
             },
             comment: 158,
             retweetCount: 879,
-            like: 1256
+            like: 1256,
+            isLike: true,
+            isRetweet: false
         }
 
     ]
