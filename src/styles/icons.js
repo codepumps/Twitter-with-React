@@ -18,7 +18,7 @@ export { Twitter } from "styled-icons/boxicons-logos";
 export { Feather } from "styled-icons/entypo";
 export { SearchOutline, Settings2Outline, BookmarkOutline, BellOutline } from "@styled-icons/evaicons-outline";
 export { Search } from "styled-icons/feather";
-
+export { CloseOutline } from "styled-icons/evaicons-outline";
 
 export function HomeStarIcon() {
     return (

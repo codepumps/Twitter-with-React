@@ -28,15 +28,16 @@ const Container = styled.div`
         display:flex;
         flex-direction:column;
         width:min(394px,100%);
+        z-index:0; /*disabled background */
     }
 `
 const SearchBar = styled.div`
-    background:var(--primary);
+    background-color:var(--primary);
     padding:8px 24px;
     width:min(394px,100%);
     position:fixed;
     top:0;
-    z-index:2;
+    z-index:1;
     max-height:60px;
 `
 const SearchInput = styled.input`

@@ -38,6 +38,7 @@ html{
     --twitter-more-dark-hover: #03293a;
     --twitter-light-hover: #2C8ED6;
     --profile-background:rgba(47,51,54);
+    --send-tweet-background:rgba(255,255,255,0.2);
 }
 
 `

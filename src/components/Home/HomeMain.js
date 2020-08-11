@@ -269,7 +269,7 @@ const HomeMain = () => {
                     <Avatar src={profile} />
                 </Link>
                 <Text>
-                    <textArea placeholder="Neler oluyor?">
+                    <textArea placeholder="Neler oluyor?" name="">
                     </textArea>
                     <TextBottom>
                         <div>
@@ -322,8 +322,8 @@ const Header = styled.div`
     align-items:center;
     position:sticky;
     top:0;
-    z-index:2;
-    background:var(--primary);
+    z-index:1;
+    background-color:var(--primary);
     padding:8px 15px;
     border-bottom:1px solid var(--outline);
     >span{

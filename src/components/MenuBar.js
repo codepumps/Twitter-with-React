@@ -1,22 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import { Twitter, Hash, BellOutline, Email, BookmarkOutline, Person, FileList2, MoreHorizantalIcon, ChevronDown, MenubarTweetIcon, MenubarHomeIcon } from "../styles/icons";
-import Button from "../components/Button";
+//components
+import Button from "./Button";
+import SendTweet from "./SendTweet";
 import profile from "../images/profile.jpg"
 
 const MenuBar = () => {
-    // const [value, setValue] = useState('');
-    // const [changeBackground, setChangeBackground] = useState({
-    //     home: true,
-    //     explore: false,
-    //     notification: false,
-    //     message: false,
-    //     bookmark: false,
-    //     lists: false,
-    //     profile: false,
-    //     moreIcon: false
-    // })
+    const [isOpenModal, setIsOpenModal] = useState(false);
+
+    const closeModal = () => {
+        setIsOpenModal(false);
+        document.body.style.overflow = 'visible';
+    }
+    const handleClick = () => {
+        setIsOpenModal(true);
+        document.body.style.overflow = 'hidden';
+    }
     return (
         <Container>
             <TopSide>
@@ -74,7 +75,7 @@ const MenuBar = () => {
                     <MoreHorizantalIcon />
                     <span>Daha Fazla</span>
                 </MenuButton>
-                <TweetleBtn theme={{
+                <TweetleBtn onClick={() => handleClick()} theme={{
                     main: "var(--twitter)",
                     btnColor: "var(--twit-text)",
                     btnBorder: "none",
@@ -84,6 +85,11 @@ const MenuBar = () => {
                     <span>Tweetle</span>
                 </TweetleBtn>
             </TopSide>
+
+            {/* Tweet Modal */}
+            {
+                isOpenModal && <SendTweet closeModal={closeModal} isOpenModal={isOpenModal} />
+            }
 
             <BottomSide>
                 <Avatar src={profile} />
@@ -106,7 +112,6 @@ const Container = styled.div`
         display:flex;
         flex-direction:column;
         justify-content:space-between;
-
         position:sticky;
         top:0;
         left:0;

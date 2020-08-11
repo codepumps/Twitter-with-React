@@ -10,7 +10,6 @@ const ExploreMain = () => {
         <>
             <Header>
                 <span>
-
                 </span>
                 <SearchBar>
                     <SearchInput placeholder="Twitter'da Ara" />

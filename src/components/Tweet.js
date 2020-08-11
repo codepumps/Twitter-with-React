@@ -4,7 +4,7 @@ import { Retweet, Heart, Comment, SaveAlt, ChevronDown } from "../styles/icons";
 
 
 const Tweet = ({ tweet }) => {
-    console.log(tweet);
+    // console.log(tweet);
     const initialState = {
         like: tweet.like,
         retweet: tweet.retweetCount,

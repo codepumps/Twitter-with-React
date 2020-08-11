@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 //router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //styled components
@@ -19,7 +19,9 @@ import Messages from "./pages/Messages";
 import Notifications from "./pages/Notifications";
 import Profil from "./pages/Profil";
 import Login from "./pages/Login";
+//components
 import BottomIconsMenu from "./components/BottomIconsMenu";
+import ScrollToTop from "./components/ScrollToTop";
 
 const AppRoute = ({ page: Page, layout: Layout, ...rest }) => { // use different layout page.
   console.log();
@@ -37,14 +39,10 @@ const AppRoute = ({ page: Page, layout: Layout, ...rest }) => { // use different
 }
 
 function App() {
-
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
-
   return (
     <>
       <Router>
+        <ScrollToTop />
         <Switch>
           <AppRoute exact path="/" layout={LoginLayout} page={Login} />
           <AppRoute path="/home" layout={MainLayout} page={Home} />
