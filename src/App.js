@@ -24,10 +24,10 @@ import BottomIconsMenu from "./components/BottomIconsMenu";
 import ScrollToTop from "./components/ScrollToTop";
 
 const AppRoute = ({ page: Page, layout: Layout, ...rest }) => { // use different layout page.
-  console.log();
+  // I want to know where is my location.That's why I sent rest array to the Layout.
   return (
     <Route {...rest} render={props => (
-      <Layout>
+      <Layout {...rest}>
         <Page {...props} />
         {
           rest.path !== "/" && <BottomIconsMenu /> // use ıcons menu expect login page
@@ -37,7 +37,6 @@ const AppRoute = ({ page: Page, layout: Layout, ...rest }) => { // use different
     } />
   )
 }
-
 function App() {
   return (
     <>

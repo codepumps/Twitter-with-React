@@ -153,6 +153,7 @@ const SubmitBtn = styled(Button)`
 
     &.light{
         opacity:1;
+        cursor:pointer;
     }
 `
 const CloseIcon = styled(CloseOutline)`

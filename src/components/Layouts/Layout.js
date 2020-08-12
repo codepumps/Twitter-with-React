@@ -2,16 +2,27 @@ import React from 'react'
 import styled from "styled-components";
 import MenuBar from "../MenuBar";
 import SideBar from "../SideBar";
+import MessagesList from "../Messages/MessagesList";
 
 const Layout = (props) => {
     return (
         <Container>
             <Wrapper>
                 <MenuBar />
-                <Content>
-                    {props.children}
-                </Content>
-                <SideBar />
+                { // When open the message page, you can see the change content, that's why I wanted to make like that.
+                    props.path === "/messages" ?
+                        <MessagesList />
+                        : <Content>
+                            {props.children}
+                        </Content>
+                }
+                {
+                    props.path === "/messages" ?
+                        <Content>
+                            {props.children}
+                        </Content>
+                        : <SideBar />
+                }
             </Wrapper>
         </Container>
     )
@@ -20,7 +31,7 @@ const Layout = (props) => {
 export default Layout
 
 const Container = styled.div`
-    /* height:100vh; */
+    height:auto;
     background:var(--primary);
 `
 

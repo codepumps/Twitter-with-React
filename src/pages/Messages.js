@@ -1,8 +1,9 @@
 import React from 'react'
+import SelectedMessage from "../components/Messages/SelectedMessage";
 
 const Messages = () => {
     return (
-        <h2>Messages page</h2>
+        <SelectedMessage />
     )
 }
 
