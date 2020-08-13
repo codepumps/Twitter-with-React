@@ -269,8 +269,8 @@ const HomeMain = () => {
                     <Avatar src={profile} />
                 </Link>
                 <Text>
-                    <textArea placeholder="Neler oluyor?" name="">
-                    </textArea>
+                    <textarea placeholder="Neler oluyor?" name="">
+                    </textarea>
                     <TextBottom>
                         <div>
                             <span >

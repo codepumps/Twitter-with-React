@@ -17,7 +17,6 @@ const SendTweet = ({ closeModal, isOpenModal }) => {
                 backgroundColor: 'var(--send-tweet-background)',
             },
             content: {
-                color: 'orange',
                 backgroundColor: "var(--primary)",
                 display: "flex",
                 flexDirection: "column",

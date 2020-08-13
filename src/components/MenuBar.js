@@ -2,21 +2,36 @@ import React, { useState } from 'react'
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import { Twitter, Hash, BellOutline, Email, BookmarkOutline, Person, FileList2, MoreHorizantalIcon, ChevronDown, MenubarTweetIcon, MenubarHomeIcon } from "../styles/icons";
+//More Button Icons
+import { IssueIcon, MomentsIcon, AdvertismentIcon, StatisticsIcon, PrivacyIcon, QuestionIcon, ScreenIcon } from "../styles/icons";
+
 //components
 import Button from "./Button";
 import SendTweet from "./SendTweet";
-import profile from "../images/profile.jpg"
+import profile from "../images/profile.jpg";
+import ScreenModal from "./ScreenModal";
+
 
 const MenuBar = () => {
-    const [isOpenModal, setIsOpenModal] = useState(false);
+    const [isOpenTweetModal, setIsOpenTweetModal] = useState(false);
+    const [isOpenScreenModal, setIsOpenScreenModal] = useState(false);
+    const [isClickedMoreButton, setIsClickedMoreButton] = useState(false);
 
-    const closeModal = () => {
-        setIsOpenModal(false);
+    const closeTweetModal = () => {
+        setIsOpenTweetModal(false);
         document.body.style.overflow = 'visible';
     }
     const handleClick = () => {
-        setIsOpenModal(true);
+        setIsOpenTweetModal(true);
         document.body.style.overflow = 'hidden';
+    }
+    const handleMoreButtonClick = () => {
+        setIsOpenScreenModal(true);
+        document.body.style.overflow = 'hidden';
+    }
+    const closeScreenModal = () => {
+        setIsOpenScreenModal(false);
+        document.body.style.overflow = 'visible';
     }
     return (
         <Container>
@@ -71,9 +86,39 @@ const MenuBar = () => {
                         <span>Profil</span>
                     </MenuButton>
                 </Link>
-                <MenuButton className="specialIcon">
+                <MenuButton onClick={() => setIsClickedMoreButton(!isClickedMoreButton)} className="specialIcon">
                     <MoreHorizantalIcon />
                     <span>Daha Fazla</span>
+                    <div className={isClickedMoreButton ? "content open-content" : "content"}>
+                        <section>
+                            <IssueIcon />
+                            <span>Konular</span>
+                        </section>
+                        <section>
+                            <MomentsIcon />
+                            <span>Anlar</span>
+                        </section>
+                        <section>
+                            <AdvertismentIcon />
+                            <span>Twitter Reklamları</span>
+                        </section>
+                        <section className="addBorder">
+                            <StatisticsIcon />
+                            <span>İstatistikler</span>
+                        </section>
+                        <section>
+                            <PrivacyIcon />
+                            <span>Ayarlar ve gizlilik</span>
+                        </section>
+                        <section>
+                            <QuestionIcon />
+                            <span>Yardım Merkezi</span>
+                        </section>
+                        <section onClick={handleMoreButtonClick}>
+                            <ScreenIcon />
+                            <span>Ekran</span>
+                        </section>
+                    </div>
                 </MenuButton>
                 <TweetleBtn onClick={() => handleClick()} theme={{
                     main: "var(--twitter)",
@@ -88,7 +133,11 @@ const MenuBar = () => {
 
             {/* Tweet Modal */}
             {
-                isOpenModal && <SendTweet closeModal={closeModal} isOpenModal={isOpenModal} />
+                isOpenTweetModal && <SendTweet closeModal={closeTweetModal} isOpenModal={isOpenTweetModal} />
+            }
+            {/*Screen Modal */}
+            {
+                isOpenScreenModal && <ScreenModal closeModal={closeScreenModal} isOpenModal={isOpenScreenModal} />
             }
 
             <BottomSide>
@@ -182,7 +231,40 @@ const MenuButton = styled.div`
             fill:var(--twitter);
         }
     }
+    /* css for More Button content  */
+    &.speacialIcon{
+        position:relative;
+    }
+    >.content{
+        display:none;
+        position:absolute;
+        background-color:var(--primary);
+        top:60px;
+        max-width:calc(315px);   
+        box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 15px, rgba(255, 255, 255, 0.15) 0px 0px 3px 1px;
+        &.open-content{
+            display:flex;
+            flex-direction:column;
+        }
 
+        >section{
+            display:flex;
+            align-items:center;
+            justify-content:flex-start;
+            padding:16px;
+            
+            &.addBorder{
+                border-bottom:1px solid var(--outline); 
+            }
+
+            &:hover{
+                background-color:var(--twitter-dark-hover);
+            }
+            >span{
+                margin-left:10px;
+            }
+        }
+    }
 
 `
 const TweetleBtn = styled(Button)`
