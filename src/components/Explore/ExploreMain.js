@@ -132,20 +132,21 @@ const Text = styled.div`
     left:15px;
     bottom:20px;
     z-index:3;
-    color:#ffffff;
     >div{
         display:flex;
         align-items:center;
         justify-content:flex-start;
         font-size:12px;
-
+        color:var(--twit-text);
         >span{
             font-weight:500;
+            color:var(--twit-text);
         }
     }
     >strong{
         font-size:23px;
         font-weight:900;
+        color:var(--twit-text)
     }
 `
 const Point = styled.div`
@@ -160,5 +161,5 @@ const BottomSpace = styled.div`
     width:100%;
     height:10px;
     top:-3px;
-    background:rgb(32, 35, 39);
+    background-color:var(--search);
 `

@@ -129,11 +129,11 @@ const Item = styled.div`
         border-top:1px solid var(--outline)
     }
     &:not(:first-child):hover{
-        background:var(--twitter-dark-hover);
+        background-color:var(--search);
     }
     >button{
         cursor:pointer;
-        font-weight:400;
+        font-weight:700;
         font-size:16px;
         overflow-wrap: break-word;
         line-height:1.3125;

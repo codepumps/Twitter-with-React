@@ -6,7 +6,7 @@ import Modal from "react-modal";
 import profile from "../images/profile.jpg"
 
 
-Modal.setAppElement('#root')
+Modal.setAppElement('#root');
 
 const SendTweet = ({ closeModal, isOpenModal }) => {
     const [tweet, setTweet] = useState("");

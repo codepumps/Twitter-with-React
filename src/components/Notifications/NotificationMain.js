@@ -143,7 +143,7 @@ const Header = styled.div`
             border-radius:50%;
 
             &:hover{
-                background:var(--twitter-dark-hover);
+                background:var(--twitter-more-dark-hover);
             }
         }
     }
@@ -163,7 +163,7 @@ const Links = styled.ul`
     justify-content:center;
     text-align:center;
     list-style-type:none;
-    border-bottom:1px solid var(--profile-background);
+    border-bottom:1px solid var(--outline);
     >li{
         >a{
             cursor:pointer;
@@ -226,7 +226,7 @@ const Content = styled.div`
                 }
                 &:hover{
                     border-radius:50%;
-                    background:#162632;
+                    background:var(--twitter-more-dark-hover);
                     svg{
                         fill:var(--twitter);
                     }

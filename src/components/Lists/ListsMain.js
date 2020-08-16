@@ -157,7 +157,7 @@ const Fasten = styled.div`
 const BottomSpace = styled.div`
     height:10px;
     width:100%;
-    background:rgb(32, 35, 39);
+    background-color:var(--search);
 `
 
 const Lists = styled.div`

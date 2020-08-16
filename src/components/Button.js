@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-// const theme = {
-//     main: "transparent",
-//     btnColor: "var(--twitter)",
-//     btnBorder: "1px solid var(--twitter)",
-//     hoverMain: "var(--twitter-dark-hover)"
-// }
 
 export default styled.button`
     background:${props => props.theme.main};

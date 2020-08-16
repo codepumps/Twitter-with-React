@@ -140,7 +140,7 @@ const Item = styled.div`
             border-radius:50%;
             &:hover{
                 cursor:pointer;
-                background:#162632;
+                background:var(--twitter-more-dark-hover);
                 >svg{
                     fill:var(--twitter);
                 }
@@ -169,7 +169,7 @@ const Item = styled.div`
     }
     &:not(:first-child):hover{
         cursor:pointer;
-        background:#191e23;
+        background:var(--search);
     }
     
     &.none{
@@ -196,7 +196,7 @@ const Title = styled.section`
         border-radius:50%;
         &:hover{
                 cursor:pointer;
-                background:#162632;
+                background:var(--twitter-more-dark-hover);
         }
         >svg{
             fill:var(--twitter);

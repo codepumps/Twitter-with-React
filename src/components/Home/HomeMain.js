@@ -411,7 +411,7 @@ const SubmitBtn = styled(Button)`
 const BottomSpace = styled.div`
     height:10px;
     width:100%;
-    background:rgb(32, 35, 39);
+    background:var(--search);
 `
 
 const Tweets = styled.div`

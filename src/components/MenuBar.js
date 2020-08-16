@@ -206,12 +206,14 @@ const MenuButton = styled.div`
         fill:var(--white);
     }
     &:hover{
-        background:var(--twitter-dark-hover);
+        background:var(--twitter-menubar-icons-hover);
     }
     &:hover,
     &.active{
         >svg{
             fill:var(--twitter);
+            color:var(--twitter);
+
         }
         >span{
             color:var(--twitter);
@@ -241,7 +243,7 @@ const MenuButton = styled.div`
         background-color:var(--primary);
         top:60px;
         max-width:calc(315px);   
-        box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 15px, rgba(255, 255, 255, 0.15) 0px 0px 3px 1px;
+        box-shadow: var(--more-button-hover) 0px 0px 15px, var(--more-button-hover) 0px 0px 3px 1px;
         &.open-content{
             display:flex;
             flex-direction:column;
@@ -273,6 +275,9 @@ const TweetleBtn = styled(Button)`
     align-items:center;
     width:100%;
     padding:16px;
+    >span{
+        color:var(--twit-text);
+    }
     >svg{
         display:none;
     }
@@ -329,16 +334,14 @@ const iconCommonCss = css`
     flex-shrink:0;
     width:30px;
     height:30px;
-    color:#fff;
+    /* color:#fff; */
 `;
 const Logo = styled(Twitter)`
     width:35px;
     height:35px;
     margin-bottom:20px;
     cursor:pointer;
-    >svg{
-        fill:var(--twitter);
-    }
+    fill:var(--logo);
 
 `
 const HashIcon = styled(Hash)`

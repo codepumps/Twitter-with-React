@@ -6,11 +6,11 @@ export {
     ExitToApp,
     LocationOn,
 } from 'styled-icons/material-outlined';
-export { Person, Cake, FavoriteBorder, Verified } from 'styled-icons/material';
+export { Cake, FavoriteBorder, Verified } from 'styled-icons/material';
 export { Comment, Heart, Retweet } from "styled-icons/evil"
 export { ArrowLeft } from 'styled-icons/heroicons-solid';
 export { HomeCircle, ChevronDown } from "styled-icons/boxicons-regular";
-export { Calendar } from "styled-icons/ionicons-outline";
+export { Calendar, Person } from "styled-icons/ionicons-outline";
 export { SaveAlt } from "styled-icons/material-rounded";
 export { Hash } from "styled-icons/evaicons-solid";
 export { FileList2 } from "styled-icons/remix-line";

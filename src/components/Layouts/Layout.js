@@ -49,7 +49,7 @@ const Content = styled.div`
     width: min(601px, 100%);
     z-index:0;/*for popaps */
     @media(min-width:500px){
-        border-left:1px solid var(--profile-background);
-        border-right:1px solid var(--profile-background);
+        border-left:1px solid var(--outline);
+        border-right:1px solid var(--outline);
     }
 `

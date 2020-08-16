@@ -162,7 +162,7 @@ const Links = styled.ul`
     text-align: center;
     list-style-type:none;
     margin-top:5px;
-    border-bottom:1px solid var(--profile-background);
+    border-bottom:1px solid var(--outline);
 
     >li{
         >a{

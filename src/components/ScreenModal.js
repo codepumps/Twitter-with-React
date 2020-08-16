@@ -1,15 +1,43 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from "styled-components";
 import { Twitter, Verified } from "../styles/icons";
 import Modal from "react-modal";
 
 //components
 import Button from "./Button";
+//context
+import { ColorsContext } from "../context/Colors";
 
 Modal.setAppElement('#root');
 
 const ScreenModal = ({ closeModal, isOpenModal }) => {
-    console.log(closeModal, isOpenModal);
+    const { theme, textColor, handleChangeColor, handleChangeTheme } = useContext(ColorsContext);
+
+    const handleInputClick = (prop) => {
+        let topParent = prop.parentElement.parentElement;
+        for (let i = 0; i < topParent.children.length; i++) {
+            topParent.children[i].classList.remove("selected");
+            topParent.children[i].children[0].checked = false;
+        }
+        //We disabled every checkboxes button and I enable checkbox which clicked.
+        prop.checked = true;
+        let val = prop.parentElement;
+        if (prop.checked) {
+            val.className += " selected";
+        }
+        else {
+            val.classList.remove("selected");
+        }
+    }
+    const handleSelectColor = (prop) => {
+        let parent = prop.parentElement.parentElement.parentElement;
+        console.log(prop.parentElement.parentElement.parentElement);
+
+        for (let i = 0; i < parent.children.length; i++) {
+            parent.children[i].children[0].children[0].checked = false;
+        }
+        prop.checked = true;
+    }
     return (
         <Modal isOpen={isOpenModal} onRequestClose={() => closeModal()}
             style={{
@@ -53,44 +81,61 @@ const ScreenModal = ({ closeModal, isOpenModal }) => {
             </Header>
             <ColorHeader>Renk</ColorHeader>
             <SelectColor>
-                <div>
-                    <span className="blue"></span>
-                    {/* <input type="checkbox" /> */}
+                <Color>
+                    <label>
+                        <input checked="checked" onClick={(e) => handleSelectColor(e.target)} type="checkbox" />
+                        <span className="checkmark blue"></span>
+                    </label>
                     <img src="https://abs-0.twimg.com/emoji/v2/svg/1f499.svg" alt="" />
-                </div>
-                <div>
-                    <span className="yellow"></span>
+                </Color>
+                <Color>
+                    <label>
+                        <input onClick={(e) => handleSelectColor(e.target)} type="checkbox" />
+                        <span className="checkmark yellow"></span>
+                    </label>
                     <img src="https://abs-0.twimg.com/emoji/v2/svg/2b50.svg" alt="" />
-                </div>
-                <div>
-                    <span className="red"></span>
+                </Color>
+                <Color>
+                    <label>
+                        <input onClick={(e) => handleSelectColor(e.target)} type="checkbox" />
+                        <span className="checkmark red"></span>
+                    </label>
                     <img src="https://abs-0.twimg.com/emoji/v2/svg/1f338.svg" alt="" />
-                </div>
-                <div>
-                    <span className="purple"></span>
+                </Color>
+                <Color>
+                    <label>
+                        <input onClick={(e) => handleSelectColor(e.target)} type="checkbox" />
+                        <span className="checkmark purple"></span>
+                    </label>
                     <img src="https://abs-0.twimg.com/emoji/v2/svg/1f419.svg" alt="" />
-                </div>
-                <div>
-                    <span className="orange"></span>
+                </Color>
+                <Color>
+                    <label>
+                        <input onClick={(e) => handleSelectColor(e.target)} type="checkbox" />
+                        <span className="checkmark orange"></span>
+                    </label>
                     <img src="https://abs-0.twimg.com/emoji/v2/svg/1f525.svg" alt="" />
-                </div>
-                <div>
-                    <span className="green"></span>
+                </Color>
+                <Color>
+                    <label>
+                        <input onClick={(e) => handleSelectColor(e.target)} type="checkbox" />
+                        <span className="checkmark green"></span>
+                    </label>
                     <img src="https://abs-0.twimg.com/emoji/v2/svg/1f951.svg" alt="" />
-                </div>
+                </Color>
             </SelectColor>
             <BackgroundHeader>Arka Plan</BackgroundHeader>
             <SelectBackground>
-                <label class="default selected">Varsayılan
-                    <input type="checkbox" checked="checked" />
+                <label class="default">Varsayılan
+                    <input value="light" name="theme" onClick={(e) => handleInputClick(e.target)} type="checkbox" checked={"light" === theme} onChange={(e) => handleChangeTheme(e.target.value)} />
                     <span class="checkmark"></span>
                 </label>
                 <label class="loess">Loş
-                    <input type="checkbox" />
+                    <input value="dim" name="theme" onClick={(e) => handleInputClick(e.target)} type="checkbox" checked={"dim" === theme} onChange={(e) => handleChangeTheme(e.target.value)} />
                     <span class="checkmark"></span>
                 </label>
                 <label class="dark">Işıklar kap...
-                    <input type="checkbox" />
+                    <input value="dark" name="theme" onClick={(e) => handleInputClick(e.target)} type="checkbox" checked={"dark" === theme} onChange={(e) => handleChangeTheme(e.target.value)} />
                     <span class="checkmark"></span>
                 </label>
             </SelectBackground>
@@ -185,43 +230,26 @@ const SelectColor = styled.div`
     padding:10px 20px;
     border-radius:12px;
     margin:0 30px;
-    background-color:var(--secondary);
-    >div{
-        display:flex;
-        flex-direction:column;
-        justify-content:space-between;
-        align-items:center;
-        width:100%;
-        height:90px;
-        >span{
-            max-width:100%;
-            height:100%;
-            cursor:pointer;
-            border-radius:50%;
-            width:40px;
-            height:40px;
-            transition:0.1s all;
-            &:hover{
-                width:48px;
-                height:48px;
-            }
-        }
-        >input{
-            color:#1DA1F2;
-            max-width:100%;
-            height:100%;
-            border-radius:50%;
-            width:40px;
-            height:40px;
-            transition:0.1s all;
-        }
-        >img{
-            width:30px;
-            height:30px;
-            margin-top:10px;
-        }
+    background-color:var(--secondary);    
+`
+const Color = styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    height:90px;
+    >label{
+        display:block;
+        position:relative;
+        width:auto;
+        cursor:pointer;
+        font-weight:bold;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
 
-        /*color for every select button */
         >span.blue{
             background-color:#1DA1F2;
         }
@@ -240,9 +268,61 @@ const SelectColor = styled.div`
         >span.green{
             background-color:#17BF63;
         }
+
+        >input{
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        >span.checkmark {
+            position: absolute;
+            left: -20px;
+            height: 40px;
+            width: 40px;
+            border-radius:50%;
+            transition:0.1s all;
+        }
+        >input:not(:checked) ~ .checkmark:hover{
+            left:-22.5px;
+            height: 45px;
+            width: 45px;
+        }
+        >input:checked ~ .checkmark{
+            border:none;
+        }
+        >span.checkmark::after{
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        >input:checked ~ span.checkmark:after{
+            display:block;
+        }
+        >span.checkmark:after {
+            left: 16px;
+            top: 10px;
+            width: 6px;
+            height: 16px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
     }
+
+    >img{
+            width:30px;
+            height:30px;
+            margin-top:10px;
+        }
+
+    /*color for every select button */
     
-`
+    
+`;
 const BackgroundHeader = styled.div`
     margin:10px 30px;
     color:var(--gray);
@@ -256,7 +336,7 @@ const SelectBackground = styled.div`
     margin:0 50px;
     padding:10px 15px;
     border-radius:12px;
-    background-color:#15181C;
+    background-color:var(--secondary);
     >label.default{
         background-color:rgb(255,255,255);
         color:#000;
@@ -270,7 +350,7 @@ const SelectBackground = styled.div`
         color:#f1f1f1;
     }
     >label.selected{
-        border:2px solid #1DA1F2;
+        border-color:#1DA1F2;
     }
     >label{
         display:block;
@@ -279,6 +359,7 @@ const SelectBackground = styled.div`
         cursor:pointer;
         padding:15px 15px 15px 50px;
         border-radius:5px;
+        border:2px solid transparent;
         font-weight:bold;
         font-size: 16px;
         -webkit-user-select: none;

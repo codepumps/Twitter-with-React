@@ -104,7 +104,7 @@ const Container = styled.div`
     display:flex;
     flex-direction:column;
     padding:14px 16px;
-    border-bottom:1px solid var(--profile-background);
+    border-bottom:1px solid var(--outline);
     cursor:pointer;
     &:hover{
         background:var(--twitter-dark-hover);
@@ -225,7 +225,7 @@ const Status = styled.div`
     }
     &:hover{
         >span.icon-comment{
-            background: #162632;
+            background: var(--tweet-comment-back-hover);
             >svg{
                 fill:var(--twitter);
             }
@@ -234,7 +234,7 @@ const Status = styled.div`
             color:var(--twitter);
         }
         >span.icon-like{
-            background:#571c32;
+            background:var(--tweet-like-back-hover);
             >svg{
                 fill:var(--like);
             }
@@ -243,7 +243,7 @@ const Status = styled.div`
             color:var(--like);
         }
         >span.icon-retweet{
-            background:#152923;
+            background: var(--tweet-retweet-back-hover);
             >svg{
                 fill:var(--retweet);
             }
